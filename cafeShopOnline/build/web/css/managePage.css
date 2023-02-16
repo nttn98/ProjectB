@@ -1,0 +1,91 @@
+.text-logo {
+    color: black;
+    font-weight: 600;
+    font-size: 30px;
+    margin-left: 30px;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+}
+.managePage-body{
+    border: 1px solid;
+    /*width: 900px;*/
+    height: 100px;
+    background-color: white;
+    align-items: center;
+}
+.managePage-body div{
+    padding-top: 20px;
+}
+
+.managePage-body  a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+}
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #898E4B;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.productManagement{
+    margin-left: 40px;
+    margin-right: -35px;
+}
+.staffManagement{
+    margin-left: -25px;
+    margin-right: 25px;
+}
+.logout{
+    margin-left: -50px;
+    margin-top: -6px;
+}
+
+@media (max-width: 900.98px) {
+    .productManagement{
+        margin-left: 40px;
+    }
+    .customerManagement{
+        margin-left: 40px;
+    }
+    .staffManagement{
+        margin-left: 40px;
+    }
+    .orderManagement{
+        margin-left: 40px;
+    }
+    .logout{
+        margin-left: 40px;
+    }
+    .text-logo{
+        margin-left: 83px;
+    }
+    
+    .managePage-body{
+        border: 1px solid;
+        /*width: 900px;*/
+        height: 300px;
+        background-color: white;
+        align-items: center;
+    }
+}
+
+

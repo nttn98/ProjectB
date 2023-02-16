@@ -1,0 +1,129 @@
+DROP DATABASE IF EXISTS cafeshoponlinedemo;
+create database if not exists cafeshoponlinedemo;
+use cafeshoponlinedemo;
+
+CREATE TABLE Manager (
+    userName VARCHAR(32) NOT NULL,
+    password VARCHAR(32) NOT NULL
+);
+CREATE TABLE Staff (
+    staffId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    staffFullName VARCHAR(35) NOT NULL,
+    staffUserName VARCHAR(20) NOT NULL,
+    staffPassword VARCHAR(20) NOT NULL,
+    staffAddress VARCHAR(300) NOT NULL,
+    staffPhone LONG NOT NULL,
+    staffStatus INT
+);
+ ALTER TABLE staff AUTO_INCREMENT = 1001;
+ 
+CREATE TABLE Product (
+    productId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    productName VARCHAR(30) NOT NULL,
+    productBrand VARCHAR(30) NOT NULL,
+    productDescription VARCHAR(500) NOT NULL,
+    productPrice DECIMAL(10 , 3 ) NOT NULL,
+    productQuantity INT NOT NULL,
+    productStatus INT
+);
+
+ ALTER TABLE Product AUTO_INCREMENT = 1001;
+ 
+CREATE TABLE Customer (
+    customerId INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    customerFullName VARCHAR(35) NOT NULL,
+    customerUserName VARCHAR(20) NOT NULL,
+    customerPassword VARCHAR(20) NOT NULL,
+    customerAddress VARCHAR(300) NOT NULL,
+    customerPhone LONG NOT NULL,
+    customerStatus INT
+);
+ALTER TABLE customer AUTO_INCREMENT = 1001;
+ 
+CREATE TABLE Orders (
+    orderId INT AUTO_INCREMENT PRIMARY KEY,
+    customerId INT NOT NULL,
+    FOREIGN KEY (customerId)
+        REFERENCES Customer (customerId),
+    total FLOAT NOT NULL,
+    orderDate DATE NOT NULL,
+    orderStatus INT
+);
+ ALTER TABLE Orders AUTO_INCREMENT = 1001;
+ SELECT date_format(orderDate, "%d- %m- %Y") as orderDate from Orders;
+ 
+CREATE TABLE OrdersDetail (
+    orderId INT NOT NULL,
+    productId INT NOT NULL,
+    FOREIGN KEY (orderId)
+        REFERENCES Orders (orderId),
+    FOREIGN KEY (productId)
+        REFERENCES Product (productId),
+    quantity INT NOT NULL,
+    price FLOAT NOT NULL,
+    subTotal FLOAT NOT NULL
+);
+
+INSERT INTO Manager(userName,password) VALUES('admin','admin');
+
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Chồn','G7','Thơm ngon đậm vị','5','10','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê nguyên chất','Trung Nguyên','Từ các nông trại đảm bảo tiêu chuẩn sạch','10','100','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Capuchino','G8','Chuẩn vị','15','20','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Hạnh Nhân','G7','Thơm ngon đậm vị hạnh nhân','50','100','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Cháy Cạnh','Trung Nguyên','Bùng nổ hương vị','13','100','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Capuchino chocolate','StarSouth','Chất','20','20','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Chán Chê','G7','Best seller','7','1','0');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Cao Cấp','Trung Nguyên','Từ các nông trại đảm bảo tiêu chuẩn sạch, ngon','190','10','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Latte','GS25','Chuẩn vị tiền','1000','2','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Sữa','G7','Sánh mịn thơm ngon','8','10','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Voi','Voi Voi','Từ núi cao','10','100','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Trứng','Viedeli','Từ nguồn 100% nhập khẩu','10','78','1');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Táo','The Coffee House','Vị ngon trên từng ngón tay','90','100','0');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('Cà Phê Nguyên Hột','Trung Nguyên','Từ các nông trại đảm bảo tiêu chuẩn sạch','15','40','0');
+INSERT INTO Product(productName,productBrand,productDescription,productPrice,productQuantity,productStatus) VALUES('SunCoffe','Sunlight','Đăng xuất luôn','15','20','1');
+
+
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Trần Nhân Tâm','nhantam','123456','3 Đinh Tiên Hoàng','0996945306','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Văn Thụ','vanthu','654321','13 Lương Định Của','0998786562','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Phủ Ngọc Tường','ngoctuong','012345','213 Yesin','0123456789','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Trần Nhân Peter','nhanpeter','098765','17 Đinh Tiên Hoàng','0996945235','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Văn Chanh','vanchanh','1','13 Bùi Viện','0998786234','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Phủ Ngọc Hoàng','ngochoang','2','213/14 Yesin','0123456233','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Văn Cam','vancam','3','3 Đại lộ Đông Tây','0996945222','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Quýt','hoangquyt','4','13 Đinh Bộ Lĩnh','0998786221','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Ổi','hoangoi','5','21/3 Yesin','0123456226','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Trần Xoài','tranxoai','6','171 Thích Quảng Đức','0996945227','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Cóc','hoangcoc','7','190 Nguyễn Công Trứ','0998786228','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Mía','hoangmia','8','213/14 Phạm Ngũ Lão','0123456229','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Trần Man','tranman','9','11 Thích Quảng Đức','0996945241','1');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Girl','hoanggirl','10','109 Nguyễn Công PC','0998786242','0');
+INSERT INTO customer(customerFullName,customerUserName,customerPassword,customerAddress,customerPhone,customerStatus) VALUES('Hoàng Đen','hoangden','11','213/14 Kha Vạn Cân','0123456243','1');
+
+
+INSERT INTO Staff(staffFullName,staffUserName,staffPassword,staffAddress,staffPhone,staffStatus) VALUES('Dương Quá','staff1','123','Nam Tống','12312312','1');
+INSERT INTO Staff(staffFullName,staffUserName,staffPassword,staffAddress,staffPhone,staffStatus) VALUES('Hoàng Dược Sư','staff2','123','Đào hoa đảo','12312456','1');
+INSERT INTO Staff(staffFullName,staffUserName,staffPassword,staffAddress,staffPhone,staffStatus) VALUES('Đoàn Dự','staff3','123','Đại Lý','12312789','1');
+INSERT INTO Staff(staffFullName,staffUserName,staffPassword,staffAddress,staffPhone,staffStatus) VALUES('Hoàng Dung','staff4','123','Đào hoa đảo','12312123','1');
+INSERT INTO Staff(staffFullName,staffUserName,staffPassword,staffAddress,staffPhone,staffStatus) VALUES('Tạ Tốn','staff5','123','Minh giáo','12312789','1');
+
+
+INSERT INTO Orders(customerId, total, orderDate, orderStatus) values ('1001','60','2002-1-31','1');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1001','1001','2','5','10');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1001','1002','2','10','20');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1001','1003','2','15','30');
+
+INSERT INTO Orders(customerId, total, orderDate, orderStatus) values ('1002','60','2022-9-2','1');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1002','1001','2','5','10');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1002','1002','2','10','20');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1002','1003','2','15','30');
+
+
+INSERT INTO Orders(customerId, total, orderDate, orderStatus) values ('1003','60','2022-3-8','1');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1003','1001','2','5','10');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1003','1002','2','10','20');
+INSERT INTO OrdersDetail(orderId, productId, quantity, price, subtotal) values ('1003','1003','2','15','30');
+
+/*Insert for Order
+
+
+/*Insert for OrderDetail

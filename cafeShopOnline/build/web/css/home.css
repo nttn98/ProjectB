@@ -1,0 +1,70 @@
+header {
+	text-align: center;
+	background-color: #111;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 20px;
+}
+
+.left-side {
+	background-color: #eee;
+	padding-top: 15px;
+}
+
+.BrandList li {
+	cursor: pointer;
+}
+
+main {
+	padding: 10px;
+}
+
+.card-header {
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.Title, label {
+	font-weight: bold;
+}
+
+.NewProduct {
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+}
+
+#Submit {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.GroupElements {
+	padding: 0px 10px;
+}
+
+.group-List img {
+	max-width: 100px;
+	height: auto;
+}
+
+.group-List .row {
+	margin-top: 20px;
+}
+
+footer {
+	padding: 20px 0px;
+	background: #111;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+}
+
+.Del {
+	cursor: pointer;
+}
+
+img {
+	max-width: 20%;
+	height: auto;
+}
